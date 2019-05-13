@@ -1,0 +1,298 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,latexsym,paralist}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\name}[1]{\noindent\textbf{Name: #1}}
+\newcommand{\honor}{\noindent On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. \\[1ex]
+ \textbf{Signature:} \underline{\hspace*{5cm}} }
+
+%  \newcommand{\checklist}{\noindent\textbf{Checklist:}
+% \begin{compactitem}[$\Box$] 
+% \item Did you add your name? 
+% \item Did you disclose all resources that you have used? \\
+% (This includes all people, books, websites, etc. that you have consulted)
+% \item Did you sign that you followed the Aggie honor code? 
+% \item Did you solve all problems? 
+% \item Did you submit (a) the pdf file of your homework?
+% \item Did you submit (b) a hardcopy of the pdf file in class? 
+% \end{compactitem}
+% }
+
+
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set
+      #1}\end{center}}
+\newcommand{\duedate}[2]{\begin{quote}\textbf{Due dates:} Electronic
+    submission of the pdf file of this homework is due on
+    \textbf{#1} on ecampus, a signed paper copy of the pdf file is due
+    on \textbf{#2} at the beginning of class. \end{quote} }
+
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+
+
+\begin{document}
+\problemset{2}
+\duedate{2/7/2019 before 11:00am}{2/7/2019}
+\name{Hunter Cleary}
+\begin{resources} (All people, books, articles, web pages, etc. that
+  have been consulted when producing your answers to this homework)
+  \begin{enumerate}
+      \item http://faculty.simpson.edu/lydia.sinapova/www/cmsc250/LN250\_Weiss/L14-RecRel.htm
+      \item https://brilliant.org/wiki/insertion/
+      \item How to: Prove by Induction - Proof of a Recurrence Relationship
+      \\https://www.youtube.com/watch?v=UThZ\_AfqEek
+      \item https://brilliant.org/wiki/karatsuba-algorithm/
+      \item https://courses.csail.mit.edu/6.006/spring11/exams/notes3-karatsuba
+
+  \end{enumerate}
+\end{resources}
+\honor
+
+\newpage
+% \noindent Make sure that you describe all solutions in your own words. \\[1ex]
+% Read chapters 2 and 4 in our textbook before attempting to solve these
+% problems. 
+
+\medskip
+\noindent\textbf{Problem A.} Solve the following subproblems of
+Problem A. 
+
+
+\begin{problem}[15 points]
+Exercise 2.3-3 on page 39 in [CLRS]. 
+\end{problem}
+\begin{solution} \\
+\\
+Proof by Induction
+\begin{enumerate}
+
+    \item Prove that statement is true for $k = 2$  $(n = 2^2)$
+    \item Assume the statement is true for $n = 2^k$
+    \item Show that the statement is true for $n = 2^{k+1}$ is true
+\end{enumerate}
+(1)\\
+$T(n) = n\log{n}$\\
+$T(2) = 2$\\
+$2\log{2} = 2$\\
+$2*1 = 2$\\
+\\ 
+(2)\\
+Assume $2T(n/2) + n$ if $n = 2^k$ is true.\\
+\\
+(3)\\
+When n = $2^{k+1}$\\
+$n\log{n} = 2T(2^{k+1} /2) + 2^{k+1}$\\
+$= 2T(2^{k+1-1}) + 2^{k+1}$\\
+$= 2T(2^{k}) + 2^{k+1}$\\
+Since $n\log{n} = T(n)$ for $2^k$ is assumed\\
+$= 2(2^k\log{2^k}) + 2^{k+1}$\\
+$= 2(k*2^k) + 2^{k+1}$\\
+$= 2*k*2^k + 2^{k+1}$\\
+$= k*2^{k+1} + 2^{k+1}$\\
+$= (k+1)2^{k+1}$\\
+$= 2^{k+1}\log{2^{k+1}}$\\
+$\therefore$\\
+$T(n)=n\log{n}$ 
+\end{solution}
+
+\begin{problem}[15 points]
+Exercise 2.3-4 on page 39 in [CLRS]. 
+\end{problem}
+\begin{solution} \\
+Insertion Sort Recurrence\\
+\\
+$T(n) = $
+\begin{cases}
+$ 1$ &\mbox{if } n = 1 \\ 
+$ T(n-1) + (n-1) $ &\mbox{if } n > 1 \\ 
+\end{cases}\\ \\ \\
+$ T(n) = O (n^2) $ 
+
+\end{solution}
+
+\newpage
+
+\begin{problem}[20 points]
+Karatsuba's algorithm to multiply large integers was sketched in the
+lecture. (a) Explain how the method works with a small example (multiply
+$11001100_2 \times 11110111_2$). (b) Derive pseudocode for
+Karatsuba's algorithm. 
+\end{problem}
+\begin{solution} \\
+Karastuba's algorithm multiplies two numbers using divide and conquer. \\ \\
+The algorithm uses 3 subproblems.\\
+\\
+\\
+For $x*y$\\
+$x_h and x_l$ are the leftmost half and right-most half bits respectively \\
+b represents the base the number is represented in\\
+$a = x_h*y_h$\\
+\\
+$d = x_l*y_l$\\
+\\
+$e = (x_h + x_l)(y_h + y_l)- a - d $\\
+\\
+Then $(x*y) = ab^n + eb^{n/2} + d$
+Where each multiplication is recursed using the same steps.\\
+\\
+(Example)\\
+\\
+To multiply $204 * 247$ $(11001100 * 11110111)$\\
+\\
+$a_1 = 20 *24 $ , $d_1 = 4 * 7 $ , $ e_1 = (20+4)(24+7) - a_1 - d_1$\\
+\\
+$a_1 = 20 * 24 $\\
+\indent     $a_2 = 2 * 2 $\\
+\indent     $d_2 = 0 * 4$\\
+\indent     $e_2 = (20 + 24)(0 + 4) - 4 - 0 = 172$\\
+\indent     $20*24 = 4*10^2 + 8*10 + 0$\\
+\indent     $a_1 = 480$
+\\
+\\
+$d_1 = 4 * 7  = 28$\\
+\\
+$e_1 = (24)(31) - 480 - 28$\\
+\indent    $a_2 = 2 * 3 $\\
+\indent     $d_2 = 4 * 1$\\
+ \indent    $e_2 = (2 + 4)(3 + 1) - 6 - 4 = 8$\\
+\indent     $24*31 = 6*10^2 + 14*10 + 4 = 744 $\\
+$e_1 = 744 - 480 - 28$\\
+$e_1 = 236$\\
+\\
+$204*247 = 480*10^2 + 236 *10 + 28$\\
+$204*247=50388$
+\\
+\newpage
+Karatsuba Psuedo Code
+\begin{verbatim}
+    function multiply(x,y){
+        b = ~base of number representation
+        n = number of digits
+        xLeftHalf = digits of x from 1 to n/2
+        xRightHalf = digits of x from n/2 to n
+        yLeftHalf = digits of y from 1 to n/2
+        yRightHalf = digits of y from n/2 to n
+        
+        a = multiply(xLeftHalf, yLeftHalf)
+        d = multiply(xRightHalf, yRightHalf)
+        e = multiply ((xLeftHalf + xRightHalf)(yLeftHalf + yRightHalf)) - a - b
+        
+        return a*b^n + e*b^(n/2) + d
+    }
+\end{verbatim}
+
+
+\end{solution}
+
+\newpage
+
+\begin{problem}[15 points]
+Exercise 4.2-5 on page 82 in [CLRS]. 
+\end{problem}
+\begin{solution} \\
+\\
+68 x 68 Matrix \\
+$T(n) = 132464T(n/68)+n^2$\\
+$T(n) = \Theta (n^{log_{68}{132464}})$\\
+$T(n) = \Theta (n^{2.795128487})$\\
+\\
+70 x 70 Matrix \\
+$T(n) = 143640T(n/70)+n^2$\\
+$T(n) = \Theta (n^{log_{70}{143640}})$\\
+$T(n) = \Theta (n^{2.79512269})$\\
+\\
+72 x 72 Matrix \\
+$T(n) = 155424T(n/72)+n^2$\\
+$T(n) = \Theta (n^{log_{72}{155424}})$\\
+$T(n) = \Theta (n^{2.795147391})$\\
+\\
+The 68 x 68 matrix has the most efficient run-time with $T(n) = \Theta (n^{2.795128487})$\\
+\\
+Strassen's algorithm is $\Theta(n^{2.81})$ , which makes the theoretical discovered method faster.
+\end{solution}
+
+\newpage
+
+\begin{problem}[20 points]
+Exercise 4.2-7 on page 83 in [CLRS]
+\end{problem}
+\begin{solution} \\
+\\
+a + bi\\
+c + di\\
+\\
+Product of Numbers \\
+$(a+bi)(c+di)$ =\\ 
+$= ac +adi + bic + bidi$\\
+$= ac + adi + bci - bd$\\
+$= ac - bd + (ad+bc)i$\\
+\\
+\begin{verbatim}
+    function complexMultiply(a,b,c,d){
+        part1 = (a+b)*(c+d)  //= ac - bd + (ad+bc)i
+        part2 = a*c   
+        part3 = b*d    
+        ac - bd = part2 - part3                     //real
+        ad + bc = part1 - part2 + part3             //imaginary
+        
+    }
+\end{verbatim}
+
+\end{solution}
+
+\newpage
+
+\begin{problem}[15 points]
+Exercise 4.5-3 on page 97 in [CLRS] 
+\end{problem}
+\begin{solution} \\
+\\
+Show that the solution to binary-search reccurrence is \\
+\\
+$T(n) = T(n/2) + \Theta(1) = \Theta(\log{n})$\\
+\\
+--Master Theorem--\\
+\\
+$a=1\\ b=2\\ f(n) = \Theta(1)$\\
+\\
+Matches Case 2:\\
+$f(n) = \Theta(n^{\log_b{a}})$\\
+$= \Theta(n^{\log_2{1}})$\\
+$= \Theta(n^{0})$\\
+$= \Theta(1)$\\
+\\
+\therefore\\
+\\
+$T(n) = \Theta(n^{\log_b{a}} * \log{n})$\\
+$= \Theta(n^{\log_2{1}} * \log{n})$\\
+$= \Theta(1 * \log{n})$\\
+$= \Theta(\log{n})$\\
+\\
+$T(n) = \Theta(\log{n})$\\
+
+
+\end{solution}
+
+
+
+% Work out your own solutions, unless you want to risk an honors
+% violation!
+\medskip
+
+
+
+\goodbreak
+\checklist
+\end{document}

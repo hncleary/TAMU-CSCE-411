@@ -1,0 +1,201 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,latexsym,paralist}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\name}[1]{\noindent\textbf{Name: #1}}
+\newcommand{\honor}{\noindent On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. \\[1ex]
+ \textbf{Signature:} \underline{\hspace*{5cm}} }
+ 
+% \newcommand{\checklist}{\noindent\textbf{Checklist:}
+% \begin{compactitem}[$\Box$] 
+% \item Did you add your name? 
+% \item Did you disclose all resources that you have used? \\
+% (This includes all people, books, websites, etc. that you have consulted)
+% \item Did you sign that you followed the Aggie honor code? 
+% \item Did you solve all problems? 
+% \item Did you submit the pdf file resulting from your latex file 
+%   of your homework?
+% \item Did you submit a hardcopy of the pdf file in class? 
+% \end{compactitem}
+% }
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set #1}\end{center}}
+\newcommand{\duedate}[2]{\begin{quote}\textbf{Due dates:} Electronic
+    submission of this homework is due on \textbf{#1} on ecampus, a
+    signed paper copy of the pdf file is due on \textbf{#2} at the
+    beginning of class. \end{quote} }
+
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+
+
+\begin{document}
+\problemset{8}
+\duedate{4/18/2019 before 12:30pm}{4/18/2019}
+\name{ Hunter Cleary }
+\begin{resources} (All people, books, articles, web pages, etc. that
+  have been consulted when producing your answers to this homework)
+  \begin{itemize}
+      \item https://en.wikipedia.org/wiki/Conjunctive\_normal\_form#Converting\_from\_\\first-order\_logic
+      \item https://www8.cs.umu.se/kurser/TDBA77/VT06/algorithms/BOOK/BOO\\K4/NODE157.HTM
+      \item http://mathworld.wolfram.com/IsomorphicGraphs.html
+      \item http://www.cs.tau.ac.il/~ronitt/COURSES/F08/lec7.pdf
+      \item https://en.wikipedia.org/wiki/Co-NP
+      \item https://www.geeksforgeeks.org/partition-problem-dp-18/
+      \item https://en.wikipedia.org/wiki/Partition\_problem
+      \item https://en.wikipedia.org/wiki/Subset\_sum\_problem
+  \end{itemize}
+\end{resources}
+\honor
+
+\newpage
+
+Read Chapter 34 in our textbook. 
+
+\begin{problem} (20 points) % 
+A boolean formula is said to be in disjunctive normal form if and only
+if it is the disjunction of clauses, where each clause is the
+conjunction of literals (e.g. $(x \wedge \neg y\wedge \neg z) \vee (\neg
+x \wedge \neg y \wedge z)$ is in disjunctive normal form). 
+Show that there exists a polynomial-time algorithm to determine
+whether a boolean formula in disjunctive normal form is satisfiable. 
+\end{problem}
+\begin{solution} \\
+\\
+A boolean formula of disjunctive normal form is satisfiable if it can be evaluated to True / 1 / T.\\
+\\
+If a clause exists containing a variable x such that ($\neg x \wedge x$), it cannot be evaluated to True.\\
+\\
+Where C is a set of clauses in a DNF boolean formula\\
+\\
+For every clause l[i] in the set of i clauses C \{ \\
+\indent \ \ \ \ if ( for variable x there exists $(\neg x \wedge x)$ )\{\\
+\indent \indent \ \ \ \ return false //not satisfiable \\
+\indent \indent \}\\
+\indent \}\\
+\indent return true //satisfiable\\
+
+
+\end{solution}
+
+\newpage
+
+\begin{problem} (20 Point) 
+Dr. S.M. Art Aleck thinks he deserves the Turing award as he gave the
+following compelling argument that SAT can be solved in polynomial
+time. Given a boolean formula $f$ in conjuctive normal form, simply
+convert $f$ to disjunctive normal form and use the poly-time algorithm
+from the previous problem to determine whether $f$ is
+satisfiable. Explain why Dr. Aleck is mistaken. 
+\end{problem}
+\begin{solution} \\
+% \\
+% Example of disjunctive normal form notation\\
+% $(x \wedge \neg y\wedge \neg z) \vee (\neg x \wedge \neg y \wedge z)$\\
+% Converted to conjunctive normal form\\
+\\
+You cannot "simply convert" conjunctive form to disjunctive normal form.\\
+\\
+Converting from CNF to DNF while preserving equivalence is an NP-hard problem. This means that it is as least as hard as the hardest problems in NP. Finding a polynomial algorithm to solve any NP-hard problem would give polynomial algorithms for all problems in NP.\\
+
+\end{solution}
+
+\newpage
+
+\begin{problem} (20 points) 
+Consider the language 
+$$\text{GRAPH-ISOMORPHISM} = \{ (G_1, G_2) : G_1 \text{
+  and } G_2 \text{ are isomorphic
+graphs}\}.$$ Prove that GRAPH-ISOMORPHISM is in NP by \textbf{describing} a
+polynomial-time algorithm to verify the language. 
+\end{problem}
+\begin{solution} \\
+\\
+Two graphs which contain the same number of graph vertices connected in the same way are isomorphic.\\
+\\
+Given an input x which is two graphs $G_1$ and $G_2$, let there be a certificate c that refers to the indices of the graph and marks the mapping of the vertices between the two graphs.\\
+\\
+It must be verified that for all pairs of vertices that are adjacent in $G_1$, they can be mapped to a pair of correlating vertices in the graph $G_2$.\\
+\\
+A polynomial time algorithm A given input graphs x and certificate c must verify that the input graphs are isomorphic.\\
+\\
+If the certificate is a permutation of the vertices, perform the permutation on graph $G_1$ and check if it is equal to graph $G_2$.\\
+\\
+
+\end{solution}
+
+ \newpage
+
+\begin{problem} (20 points) % If NP != co-NP then NP != P. 
+Exercise 34.2-10 on page 1066. [Hint: Read Chapter 34.2 and make sure you
+understand the definition of co-NP.] \\
+\\
+Prove that if NP != co-NP, then P != NP.
+
+\end{problem}
+\begin{solution} \\
+\\
+A decision problem X is a member of co-NP if and only if its complement $\Bar{X}$ is in the complexity class NP.\\
+\\
+You can prove the above by showing that P = NP implies NP = co-NP. Assuming P = NP, let a decision problem $X \in $ co-NP . $\Bar{X} \in NP$, but since NP = P, it can be concluded that $\bar{X} \in P$.\\
+\\
+$X = \Bar{X} \in P$, $\therefore$ co-NP $\subseteq P$. \\
+$P \subseteq $ co-NP, $\therefore$ P = co-NP\\
+$P = NP$, $\therefore$ NP = co-NP\\
+\\
+Since P = NP implies NP = co-NP, NP != co-NP implying P != NP is true.\\
+
+\end{solution}
+
+\newpage
+
+\begin{problem} (20 points) % Set partition is NP complete
+Exercise 34.5-5 on page 1101 [Hint: Reduce SUBSET SUM
+to SET PARTITION.] \\
+\\
+The \textbf{set-partition problem} takes as input a set S of numbers. The question is whether the numbers can be partitioned into two sets A and $\bar{A} = S - A$ such that $\sum_{x \in A} x = \sum_{x \in \bar{A}} x$. Show that the set partition problem is NP-complete.
+
+\end{problem}
+\begin{solution} \\
+\\
+To show that a problem is NP-Complete:
+\begin{enumerate}
+    \item there is a P time algorithm that solves A
+    \item any NP-Complete problem B can be reduced to A
+    \item the reduction of B to A runs in P time
+    \item the original problem A has a solution iff B has a solution
+\end{enumerate}
+\\
+Set Partition $\in$ NP: guessing the two partitions, then using a certifier to verify that the two have equal sums\\
+\\
+Reduction:\\
+\\
+This problem is solved by reducing \textbf{subset-sum}.\\
+\\
+Let X be a set of integers with target $t$. Let $s$ be the sum of elements that exist in X. Let there be two partitions that have equal sums. Verifying this set partition means the that the problem $\in$ NP.\\
+\\
+The reduction from the sub-set problem to the set-partition problem will take P time.\\
+\\
+The set X bleongs to the subset sum if it belongs to the set-partition problem. $X' = X \cup \{s-2t\}$\\
+\\
+If there are numbers in the set partition problem that sum to $t$, the remaining numbers in X sum to $s-t$. There exists a partition of $X'$ into two where each partition sums to $s-t$. Given this, one of the sets contains the number $s-2t$. After removing this number from the set, there exists a set of numbers that sums to $t$. All of those numbers exist in X.\\
+\\
+\end{solution}
+
+% Make sure that you write the solutions in your own words!
+\medskip
+
+
+
+\goodbreak
+\checklist
+\end{document}

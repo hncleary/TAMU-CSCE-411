@@ -1,0 +1,323 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,latexsym,paralist}
+\usepackage{indentfirst}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{times}
+\usepackage{ulem}
+\usepackage[nocenter]{qtree}
+\usepackage{tree-dvips}
+% \usepackage{gb4e}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\name}[1]{\noindent\textbf{Name: #1}}
+\newcommand{\honor}{\noindent On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. \\[1ex]
+ \textbf{Signature:} \underline{\hspace*{5cm}} }
+
+% \newcommand{\checklist}{\noindent\textbf{Checklist:}
+% \begin{compactitem}[$\Box$] 
+% \item Did you add your name? 
+% \item Did you disclose all resources that you have used? \\
+% (This includes all people, books, websites, etc. that you have consulted)
+% \item Did you sign that you followed the Aggie honor code? 
+% \item Did you solve all problems? 
+% \item Did you write the solution in your own words? 
+% \item Did you submit the pdf file of your homework?
+% \item Did you submit a signed hardcopy of the pdf file in class? 
+% \end{compactitem}
+% }
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set #1}\end{center}}
+\newcommand{\duedate}[2]{\begin{quote}\textbf{Due dates:} Electronic submission of .pdf files of this homework is due on \textbf{#1} on ecampus, a signed paper copy
+    of the pdf file is due on \textbf{#2} at the beginning of
+    class. \end{quote} }
+
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\tikzset{face/.style={scale=0.5,shape=circle,minimum size=4ex,shading=radial,outer sep=0pt,
+        inner color=white!50!yellow,outer color= yellow!70!orange}}
+
+\newcommand{\aha}{%
+\begin{tikzpicture}[scale=0.5]
+     \node[face] {}; 
+     \draw[fill=white] (-1ex,0ex) ..controls (-0.5ex,0.2ex)and(0.5ex,0.2ex)..
+        (1ex,0.0ex) ..controls ( 1.5ex,1.5ex)and( 0.2ex,1.7ex)..
+        (0ex,0.4ex) ..controls (-0.2ex,1.7ex)and(-1.5ex,1.5ex)..
+        (-1ex,0ex)--cycle;
+    \fill[shift={(0.5ex,0.5ex)},rotate=80] 
+       (0,0) ellipse (0.3ex and 0.15ex);
+  \fill[shift={(-0.5ex,0.5ex)},rotate=100] 
+       (0,0) ellipse (0.3ex and 0.15ex);
+  \draw[] (-1.5ex,-0.5ex)
+               ..controls (-0.7ex,-1.7ex)and(0.7ex,-1.7ex)..(1.5ex,-0.5ex);
+\end{tikzpicture}
+}
+
+\newcommand{\confused}{%     
+\begin{tikzpicture}[scale=0.5]
+  \node[face] {}; 
+\draw[fill=white] (-1ex,0ex) ..controls (-0.5ex,0.2ex)and(0.5ex,0.2ex)..
+        (1ex,0.0ex) ..controls ( 1.5ex,1.5ex)and( 0.2ex,1.7ex)..
+        (0ex,0.4ex) ..controls (-0.2ex,1.7ex)and(-1.5ex,1.5ex)..
+        (-1ex,0ex)--cycle;
+    \fill[shift={(0.5ex,0.5ex)},rotate=80] 
+       (0,0) ellipse (0.3ex and 0.15ex);
+  \fill[shift={(-0.5ex,0.5ex)},rotate=100] 
+       (0,0) ellipse (0.3ex and 0.15ex);
+  \draw[] (-1ex,-0.75ex)--(1ex,-1.25ex);
+\end{tikzpicture}
+}
+
+
+\begin{document}
+\problemset{1}
+\duedate{1/24/2019 before 11:00am}{1/24/2019}
+\name{ Hunter Cleary}
+\begin{resources}\\ 
+\begin{itemize}
+    \item
+    \item https://www.khanacademy.org/computing/computer-science/algorithms/asymptotic-notation/a/big-big-omega-notation
+    \item https://www.mcs.sdsmt.edu/ecorwin/cs372/handouts/theta\_n\_factorial.htm
+    \item https://www.youtube.com/watch?v=iDlEgFzdBFw
+    \item http://www.dcc.fc.up.pt/~pribeiro/aulas/alg1718/slides/5\_lowerbounds\_24102017.pdf
+\end{itemize}
+
+\end{resources}
+\honor
+
+\newpage
+
+\begin{problem}[20 points for Homework 1A]
+% Submit your solution to Homework 1A on ecampus. See ecampus for
+% instructions. This part of the homework is due on Tuesday, January 22,
+% 8:00pm. 
+\end{problem}
+
+% The problems of Homework 1B follow. 
+
+% \begin{solution}
+% Completed
+% \end{solution}
+
+\begin{problem}[20 points] 
+Give a self-contained proof of the fact that 
+$$\log_2(n!)\in \Theta(n\log n).$$
+[For part of your argument, you can use results that were given in the
+lecture, but you should write up the proof in your own words.] \\ 
+\end{problem} 
+
+\begin{solution} 
+\\ The fact is true if 
+\begin{itemize}
+    \item $\log{}(n!) = \mathcal{O}(n\log{}n)$
+    \item $\log{}(n!) = \Omega(n\log{}n)$
+\end{itemize}
+are both true.\\ \\
+\emph{Part 1} \ 
+$\log{}(n!) = \mathcal{O}(n\log{}n)$ \\ \\ 
+$\log{}(n!) = \log{}(1*2*3 \cdots (n-1)(n))$ \\ 
+$\log{}(n!) \leq \log{}1 + \log{}2 + \log{}3 + \cdots + \log{}n $ \\
+$(\log{}1 , \log{}2 , \log{}3 , \cdots , \log{}n)$ are all $\leq \log{}n$
+\\ $\log{}(n!) \leq \log{}n + \log{}n + \log{}n + \cdots + \log{}n$ \\
+$\log{}(n!) \leq n\log{}n $ \\
+$\therefore$ \\ 
+$\log{}(n!) = \mathcal{O}(n\log{}n)$ \\ 
+\\
+\emph{Part 2}  \
+$\log{}(n!) = \Omega(n\log{}n)$ \\ \\ 
+$\log{}(n!) = \log{}(1*2*3 \cdots (n-1)(n))$ \\ 
+$\log{}(n!) = \log{}1 + \log{}2 + \cdots + \log{}n $ \\
+By using the latter half of the summation it can be said that: \\ 
+$\log{}(1) + \cdots + log{}(n/2) + \cdots + log{}(n) \geq log{}(n/2) + \cdots + log{}(n) $ \\
+$log{}(n/2) + \cdots + log{}(n) = log{}(n/2) + log{}((n/2)+1) + log{}((n/2)+2) + \cdots + log{}(n) $ \\
+ which are all $\geq \log{}(n/2)$ \\
+$\geq \log{}(n/2)  + \cdots + log{}(n/2) $ \\
+$\geq \log{}(n/2)  + \cdots + log{}(n/2) =(n/2) * \log{}(n/2)$\\
+$\geq \log{}(n/2)  + \cdots + log{}(n/2) =(n/2) * \log{}(n/2)$\\
+$\log{}(n!) \geq (n/2) \log{}(n/2)$ \\
+$(n/2) \log{}(n/2) = (n/2)(\log{}(n-1)$\\
+$(n/2)(\log{}(n-1) = (n/2)(\log{}n-(n/2)$\\
+$\geq (n/4)\log{}(n)$\\
+$\log{}(n!) \geq (1/4)n\log{}(n)$\\
+$\therefore$ \\ 
+$\log{}(n!) = \Omega(n\log{}n)$ \\ \\ 
+$\log{}(n!) = \Omega(n\log{}n)$ and $\log{}(n!) = \mathcal{O}(n\log{}n)$ are both true so $\log(n!) = \Theta(n\log n)$ is also true.
+
+% $(n!)^2 = (n!)(n!)$ \\
+% $(n!) = (n) * (n-1) * (n-2) * \cdots * 1$ \\
+% $(n!)^2 = (n*1) * ((n-1)*2) * ((n-2)*3) * \cdots * (n)$ \\
+% $(n!)^2 = $ 
+%   ${\displaystyle \prod_{k=1}^{n} (n-k+1)*k }$
+% \\
+% $(n!)^2 = $ 
+%   ${\displaystyle \prod_{k=1}^{n} (-k^2 + nk + k) }$
+% \\
+% The function $F(k) = -k^2 + nk + k$ has a minimum value at $k=n$ \\
+% $(n!)^2 = {\displaystyle \prod_{k=1}^{n} F(k) } \leq  $ 
+
+
+
+\end{solution}
+\newpage
+\begin{problem}[10 points] 
+  Amelia attempted to solve $n$ algorithmic problems. She wrote down
+  one problem per page in her journal and marked the page with
+  \confused when she was unable to solve the problem and with \aha
+  when she was able to solve it. So the pages of her journal look like
+  this: 
+$$ 
+\begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+\vphantom{\Big|}\confused&\confused&\confused&\aha&\confused&\aha&\confused&\aha\\
+\hline
+\end{array}
+$$
+Use the decision tree method to show that any algorithm to find a page with an
+\aha smiley on has to look at all $n$ pages in the worst case. \ \\ \\
+\end{problem}
+
+
+\begin{solution}
+\Tree [.Start \qroof{}.\aha True [.\confused False \aha True [.\confused False \aha True [.\confused False ] ] ] ]
+\paragraph{}
+Analyzing each page, a decision is made as to whether or not a "\aha" is present. Each node in the decision tree represents looking at one page. The height of the decision tree will equal the number of pages looked at. In the worst case, n-1 pages will be analyzed first all containing "\confused". If "\aha" is only on the last page or does not exist, then the algorithm will need to look at all n pages.
+
+
+\end{solution}
+\newpage
+\begin{problem}[10 points] 
+  Amelia attempted to solve $n$ algorithmic problems. She wrote down
+  one problem per page in her journal and marked the page with
+  \confused when she was unable to solve the problem and with \aha
+  when she was able to solve it. So the pages of her journal look like
+  this: 
+$$ 
+\begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+\vphantom{\Big|}\confused&\confused&\confused&\aha&\confused&\aha&\confused&\aha\\
+\hline
+\end{array}
+$$
+Use an adversary method to show that any method to find a page with an
+\aha smiley on it might have to look at all $n$ pages. 
+\end{problem}
+\begin{solution}  
+\paragraph{}
+Regardless of initial page order, the adversary will control the input data so that all false cases ("\confused") are presented to the correct algorithm first. This specific input will generate the worst case input and as well as the longest possible running time. If all, or all but one, pages are marked with "\confused" the algorithm will have to look at all n pages.
+\\ \\ \\ \\
+\end{solution}
+\newpage
+\begin{problem}[20 points] 
+  Amelia attempted to solve $n$ algorithmic problems, where $n$ is an
+  odd number. She wrote down one problem per page in her journal and
+  marked the page with \confused when she was unable to solve the
+  problem and with \aha when she was able to solve it. Suppose that we
+  want to find the pattern $\confused\aha$, where she was unable to
+  solve a problem, but was able to solve the subsequent problem. 
+
+  Find an algorithm that always looks at fewer than $n$ pages but is
+  able to correctly find the pattern when it exists. [Hint: First look
+  at all even pages.] 
+\end{problem}
+
+\begin{solution} 
+\\ \\TRUE = \aha \\ FALSE = \confused
+$$ 
+\begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+\vphantom{\Big|}\confused 0 & \confused 1 &\confused 2 &\aha 3&\confused 4&\aha 5&\confused 6& ... \\
+\hline
+\end{array}
+$$
+
+\begin{verbatim}
+    for (page i = 1 ; i < number of pages ; i+=2){
+        if page[i] contains TRUE {
+            if page[i - 1] contains FALSE{
+                output "pattern found" at ( i - 1 )
+            }
+        }
+        if page[i] contains FALSE {
+            if page[i + 1] contains TRUE{
+               output "pattern found" at i
+            }
+        }
+    }
+    if pattern not found{
+        output "pattern doesn't exist"
+    }
+\end{verbatim}
+\paragraph{} This algorithm looks at every other page in a set of odd sized pages. By looking at every other page, the algorithm can determine which way it is possible for the pattern "\confused \aha" to occur. It then checks the adjacent page in the correct direction, eliminating the need to check every possible combination of 2 adjacent pages. This causes the worst case run-time to be n-1.
+\end{solution}
+\newpage
+\begin{problem}[20 points]
+Suppose that we are given a sorted array $A[1..n]$ of $n$ numbers. Our
+goal is to determine whether or not the array $A$ contains
+duplicate elements. We will limit ourselves to algorithms that use only the spaceship
+operator \verb|<=>| for comparisons, where 
+\begin{verbatim}
+a <=> b :=
+  if a < b then return -1
+  if a = b then return  0
+  if a > b then return  1
+  if a and b are not comparable then return nil
+\end{verbatim}
+No other methods will be used to compare or inspect elements of the
+array. 
+\begin{enumerate}[(a)]
+\item Give an efficient (optimal) comparison-based algorithm that decides
+  whether $A[1..n]$ contains duplicates using the spaceship operator
+  for comparisons. 
+\item Use an adversarial argument to show that no algorithm can solve
+  the problem with fewer calls to the comparison operator \verb|<=>|
+  than the algorithm that you gave in (a). 
+\end{enumerate}
+\end{problem}
+\begin{solution} 
+(a)
+\begin{verbatim}
+    for( i = 0 ; i < n - 1 ; i++ ){
+        if ( (A[i] <=> A[i + 1]) == 0){
+            output "duplicate elements exist"
+            end
+        }
+    }
+    else { output "duplicate elements do not exist" }
+\end{verbatim}
+\paragraph{}Worst case run-time is n-1\\ \\ 
+(b)
+\paragraph{} Due to this being a sorted array, if duplicate numbers exist they will be adjacent to one another. The input needed to create the longest run-time is an array containing duplicate numbers in the last two locations compared by the algorithm (or no duplicate numbers at all). Every number must be compared to its adjacent value. Therefore, no matter the order, if the last two values compared are the only duplicates in the array the algorithm will have a run-time of n-1.
+
+$$ 
+\begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+\vphantom{\Big|}1&2&3&4&4&5&7 \\
+\hline
+\end{array}
+$$
+\paragraph{} Last values presented to algorithm are A[3] and A[4]
+$$ 
+\begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+\vphantom{\Big|}1&2&3&4&5&7&7 \\
+\hline
+\end{array}
+$$
+\paragraph{} Last values presented to algorithm are A[5] and A[6]
+\end{solution}
+\medskip
+\goodbreak
+\checklist
+\end{document}

@@ -1,0 +1,256 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,latexsym,paralist,color}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\name}[1]{\noindent\textbf{Name: #1}}
+\newcommand{\honor}{\noindent On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. \\[1ex]
+ \textbf{Signature:} \underline{\hspace*{5cm}} }
+
+% \newcommand{\checklist}{\noindent\textbf{Checklist:}
+% \begin{compactitem}[$\Box$] 
+% \item Did you add your name? 
+% \item Did you disclose all resources that you have used? \\
+% (This includes all people, books, websites, etc. that you have consulted)
+% \item Did you sign that you followed the Aggie honor code? 
+% \item Did you solve all problems? 
+% \item Did you submit the pdf file
+%   of your homework?
+% \item Did you submit a hardcopy of the pdf file in class? 
+% \end{compactitem}
+% }
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set
+      #1}\end{center}}
+\newcommand{\duedate}[2]{\begin{quote}\textbf{Due dates:} Electronic
+    submission of this homework is due on \textbf{#1} on ecampus, a
+    signed paper copy of the pdf file is due on \textbf{#2} at the
+    beginning of class. \end{quote} }
+
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+
+\newcommand{\bl}[1]{\color{blue}#1\color{black}}
+
+\begin{document}
+\problemset{7}
+\duedate{Tuesday 4/2/2019 before 12:30pm}{4/2/2019}
+\name{ Hunter Cleary }
+\begin{resources} (All people, books, articles, web pages, etc. that
+  have been consulted when producing your answers to this homework)
+  \begin{itemize}
+      \item http://theanalysisofdata.com/probability/E\_1.html
+      \item https://www.mathsisfun.com/data/probability-events-conditional.html
+      \item https://sarielhp.org/teach/2004/b/webpage/lec/17\_mincut.pdf
+      \item https://en.wikipedia.org/wiki/Karger\%27s\_algorithm
+      \item https://web.stanford.edu/class/archive/cs/cs161/cs161.1138/lectures/11/Small11.pdf
+  \end{itemize}
+  
+\end{resources}
+\honor
+
+\newpage
+
+
+\begin{problem}[20 points] 
+Suppose that the sample space $\Omega$ is given by the set of positive
+integers. Let $\mathcal{F}$ denote the smallest family of subsets of
+$\Omega$ such that (a) $\mathcal{F}$ contains all finite sets, (b)
+$\mathcal{F}$ is closed under
+complements (meaning if $A$ is in $\mathcal{F}$, then $A^c$ is in
+$\mathcal{F}$), and (c) $\mathcal{F}$ is closed under countable
+unions (so if the sets $E_1, E_2,  \ldots$ are contained in
+$\mathcal{F}$, then $\bigcup_{k=1}^\infty E_k$ is contained in
+$\mathcal{F}$). 
+\begin{compactenum}[(a)]
+\item Show that $\mathcal{F}$ is a $\sigma$-algebra. 
+\item Prove of disprove: $\mathcal{F}$ is equal to the power set
+  $P(\Omega)$. 
+\end{compactenum}
+\end{problem}
+\begin{solution}
+\end{solution} \\
+\begin{itemize}
+    \item (a)
+    \begin{itemize}
+        \item $\mathcal{F}$ is countable, therefore it contains the empty set.
+        \item $\mathcal{F}$ is closed under compliments(For set A there is a set $A^c$)
+        \item $\mathcal{F}$ is a countable collection
+    \end{itemize}
+    $\mathcal{F}$ meets all the conditions of a $\sigma$-algebra set
+    \item (b)
+    
+\end{itemize}
+
+\newpage
+
+\begin{problem}[20 points] 
+Suppose that $A$ and $B$ are events in an experiment with $\Pr[ A
+\setminus B] = 1/6$, $\Pr[B\setminus A]=1/4$, and $\Pr[ A\cap B] = 1/12$. Find the
+probability of each of the following events:
+\begin{compactenum}[(a)]
+\item $A$,
+\item $B$,
+\item $A\cup B$,
+\item $A^c \cup B^c$. 
+\end{compactenum}
+\end{problem}
+\begin{solution} \\
+
+\begin{itemize}
+    \item (a) $Pr[A \backslash B] = Pr[A] - Pr[A \cap B]$\\
+    $ - Pr[A] =  - Pr[A \cap B] - Pr[A \backslash B]$\\
+    $ Pr[A] =  Pr[A \cap B] + Pr[A \backslash B]$\\
+    $ Pr[A] = 1/12 + 1/6$\\
+    $ Pr[A] = 3/12$\\
+    \\
+    $ Pr[A] = 1/4$\\
+    
+    \item (b)
+    $Pr[B \backslash A] = Pr[B] - Pr[A \cap B]$\\
+    $ - Pr[B] =  - Pr[A \cap B] - Pr[B \backslash A]$\\
+    $ Pr[B] =  Pr[A \cap B] + Pr[B \backslash A]$\\
+    $ Pr[B] = 1/12 + 1/4$\\
+    $ Pr[B] = 4/12$\\
+    \\
+     $ Pr[B] = 1/3$\\
+     
+     \item (c) 
+     $Pr[A \cup B] = Pr[A \backslash B] + Pr[A \backslash B] + Pr[A \cap B]$\\
+     $Pr[A \cup B] = 1/6 + 1/4 + 1/12$\\
+     \\
+     $Pr[A \cup B] = 1/2$\\
+     
+     \item (d) $Pr[A^c \cup B^c] = Pr[A \cap B]^c$ -- DeMorgan's Law \\
+     $Pr[A^c \cup B^c] = 1 - Pr[A \cap B]$\\
+     $Pr[A^c \cup B^c] = 1 - 1/12$\\
+     \\
+     $Pr[A^c \cup B^c] = 11/12$\\
+     
+    
+\end{itemize}
+
+\end{solution}
+
+\newpage
+
+\begin{problem}[20 points] 
+Give examples of events where (a) $\Pr[A \mid B] < \Pr[A]$, 
+(b) $\Pr[A \mid B] =  \Pr[A]$, and (c) $\Pr[A \mid B] > \Pr[A]$. Make
+sure that your proofs are complete and self-contained. 
+\end{problem}
+\begin{solution} \\
+\begin{itemize}
+    \item (a)\\
+    The probability of $Pr[A|B]$ is the probability of A occurring given that B occurs. $(Pr["A$ and $B"]) = P[A] * Pr[B|A]$\\
+    \\
+    If you were to pick a random card from a shuffled deck of playing cards, your chance for picking an Ace of Spades card is 1 in 52. ($B = 1/52$).\\
+    \\
+    If A were the chance of picking an Ace card from the deck, $A = 4/52$, then the probability of A occurring after B ($Pr[A|B]$) would be $3/52$.\\
+    \\
+    $(3/52) < (4/52)$
+    
+    \item (b)\\
+    If B was the probability of drawing a card with a value greater than 7, then its probability will be $6/13$.\\
+    \\
+    Let A be the probability that the card picked from the deck is a Heart card ($1/4$)\\
+    \\
+    Since A will happen $1/4$ of the time no matter what the card value is, $Pr[A] = Pr[A|B]$\\
+    
+    \item (c)\\
+    Let there exist three playing cards face down. They are the ace of spades, ace of diamonds, and the ace of hearts.\\
+    \\
+    Let B be the probability that the ace of spades is drawn ($1/3$)\\
+    \\
+    Let A be the probability that the ace of hearts is drawn ($1/3$)\\
+    \\
+    If B occurs, the the probability of A becomes ($1/2$). Making $Pr[A] < Pr[A|B]$ true.\\
+    
+    
+\end{itemize}
+\end{solution}
+
+\newpage
+
+\begin{problem}[20 points] 
+  There may be several different min-cut sets in a graph. Using the
+  analysis of the randomized min-cut algorithm, argue that there can
+  be at most $n(n - 1)/2$ distinct min-cut sets.
+\end{problem}
+\begin{solution} \\
+A min-cut is the smallest possible cut that can be made on a graph. Every graph has $2^{n-1}$ cuts, among which at most $n(n - 1)/2$ can be minimum cuts, where n is the number of vertices.\\
+\\
+Let k be equal to the size of the minimum cut. All vertices will have a degree of k or higher. There are at least $2k/n$ edges. The probability of selecting an edge crossing the cut C in the first step is at most $2/n$. Therefore, the probability of finding a cut that isn't this is $1 - (2/n)$. (Compliment $A^c$ of the original probability A).\\
+\\
+Beginning at the $m^{th}$ step, there are $n-m+1$ remaining vertices. The graph / multi-graph at this step has $(k/2)*(n-m+1)$ edges. The probability A to select an edge  that crosses cut C is $2/(n-m+1)$.\\
+\\
+Conditional Probability\\
+\\
+$Pr[E_{m}|E_{m-1} \cap ...\cap E_{1}] \geq 1 - 2/(n-m+1) = (n-m-1)/(n-m+1)$\\
+\\
+Summation of conditional probabilities\\
+\\
+$Pr[E_{m} \cap ...\cap E_{1}] $\\
+$=Pr[E_{m}|E_{m-1} \cap ...\cap E_{1}]*Pr[E_{m} \cap ...\cap E_{1}] $\\
+$=Pr[E_{m-2}|E_{m-3} \cap ...\cap E_{1}]*Pr[E_{m-1}|E_{m-2} \cap ...\cap E_{1}*Pr[E_{m}|E_{m-1} \cap ...\cap E_{1}]*Pr[E_{m} \cap ...\cap E_{1}]$\\
+etc.\\
+
+
+$$Pr[\cap^{n-2}_{j=1} E_{j}]\geq \prod_{m=1}^{n-2} (n-m-1/n-m+1) = 2/n(n-1)$$
+
+\end{solution}
+
+\newpage
+
+\begin{problem}[20 points] 
+The FastCut algorithm by Karger and Stein finds a given minimum cut
+  $C$ with probability $P(n) \ge c/\ln n$ for some positive real
+  number $c$. How many times should you repeat FastCut so that the probability
+  to miss a given minimum cut is less than $1/n$? [Hint: Put the
+  formula $1+x\le e^x$ to good use]. 
+\end{problem}
+\begin{solution} \\
+As the graph gets smaller, the probability of making a bad cut choice increase. The algorithm needs to be run more times when the graph is smaller. \\
+\\
+The algorithm finds a min cut iff: The partial contraction step doesn't contract an edge in the min cut, and at least one of the two remaining contractions does find a min cut.\\
+\\
+The algorithm returns a min cut with probability $\Omega (1 / log n)$\\
+$P(n) \geq ( c/ \ln n )$ for some positive number c\\
+If the alogrithm is run $ln^2 n$ times, the probability that all runs fail is 1/n.\\
+\\
+$$(1-(1/\ln n))^{\ln^2 n} \leq (1/e)^{\ln^2 n} = 1/n $$
+
+\end{solution}
+
+
+
+
+
+
+
+
+
+\goodbreak
+\checklist
+\end{document}
+\usepackage[utf8]{inputenc}
+
+\title{CSCE 411 Homework 7}
+\author{hncleary }
+\date{March 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\end{document}
